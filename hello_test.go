@@ -27,11 +27,23 @@ func TestHello(t *testing.T) {
 
 
 func TestInput(t *testing.T) {
-	got := HelloInput("telnet")
-	want:= "ABCtelnet"
+	t.Run("saying ABC to telnet", func(t *testing.T){
+		got := HelloInput("telnet")
+		want:= "ABCtelnet"
+	
+		if got != want {
+			t.Errorf("got %q want %q", got, want)
+		}
+	})
+	t.Run("default print Hello Ivan if Empty Input", func(t *testing.T){
+		got := HelloInput("")
+		want:= "Hello Ivan"
 
-	if got != want {
-		t.Errorf("got %q want %q", got, want)
-	}
+		if got != want {
+			t.Errorf("got %q want %q", got, want)
+		}
+
+	})
 }
+
 

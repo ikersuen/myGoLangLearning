@@ -11,6 +11,7 @@ func IkerTalk() string {
 }
 
 func HelloInput(s string) string {
+	if (s==""){return "Hello Ivan"}
 	return "ABC" + s
 }
 
