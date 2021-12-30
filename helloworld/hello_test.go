@@ -28,32 +28,41 @@ func TestHello(t *testing.T) {
 
 func TestInput(t *testing.T) {
 
-	message := func(t testing.TB, got, want string) {
+	assertionMessage := func(t testing.TB, got, want string) {
 		t.Helper()
 		if got != want {
 			t.Errorf("got %q want %q", got, want)
 		}
 	}
-	t.Run("saying ABC to telnet", func(t *testing.T){
+	assertionNewMessage := func(t testing.TB, got, want string){
+		t.Helper()
+		if(got == want) {
+			fmt.Println("It was the same!!!!!!")
+		}
+	}
+	t.Run("saying ABC to telnet", func(tt *testing.T){
 		got := HelloInput("Iker","")
 		want:= "Hello Iker"
-		message(t,got,want)
+		assertionMessage(tt,got,want)
 	})
-	t.Run("default print Hello Ivan if Empty Input", func(t *testing.T){
+	t.Run("default print Hello Ivan if Empty Input", func(ta *testing.T){
 		got := HelloInput("","")
 		want:= "Hello Ivan"
-		message(t,got,want)
+		assertionMessage(ta,got,want)
 	})
-	t.Run("test French", func(t *testing.T){
+	t.Run("test French", func(tb *testing.T){
 		got:= HelloInput("Iker","french")
 		want:= "Bonjour Iker"
-		message(t,got,want)
+		assertionMessage(tb,got,want)
 	})
-	t.Run("test spanish", func(t *testing.T){
+	t.Run("test spanish", func(tc *testing.T){
 		got:= HelloInput("Iker","spanish")
 		want:= "Hola Iker"
-		message(t,got,want)
+		assertionMessage(tc,got,want)
+		assertionNewMessage(tc,got,want)
 	})
+	
+	
 
 }
 
